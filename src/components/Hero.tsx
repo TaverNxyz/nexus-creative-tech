@@ -19,31 +19,36 @@ const Hero = () => {
       />
       
       <div className="container relative z-10 px-4 mx-auto">
-        <div className="max-w-3xl mx-auto text-center text-white">
-          <h1 className="mb-6 text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-            PlentifulPower <span className="text-accent">Consulting</span>
-          </h1>
+        <div className="max-w-4xl mx-auto text-center text-white">
+          <div className="mb-8">
+            <h1 className="mb-4 text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+              Vela<span className="text-accent">.</span>
+            </h1>
+            <p className="text-xl md:text-2xl font-light tracking-wide text-gray-300">
+              Digital Studio
+            </p>
+          </div>
           
-          <p className="mb-8 text-xl md:text-2xl text-gray-200 leading-relaxed">
-            Empowering small businesses and creators with modern digital solutions across the Netherlands and United States
+          <p className="mb-12 text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto font-light">
+            Crafting modern digital experiences for small businesses and creators across the Netherlands and United States
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
               onClick={scrollToContact}
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-lg transition-all hover:scale-105 shadow-lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium px-10 py-7 text-base transition-all hover:scale-[1.02] shadow-lg hover:shadow-glow"
             >
-              Get Started <ArrowRight className="ml-2 h-5 w-5" />
+              Start Project <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             
             <Button 
               size="lg" 
               variant="outline"
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-6 text-lg transition-all"
+              className="border border-white/30 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 hover:border-white/50 font-medium px-10 py-7 text-base transition-all"
             >
-              View Services
+              Explore Services
             </Button>
           </div>
         </div>

@@ -8,9 +8,9 @@ const Contact = () => {
       <div className="container px-4 mx-auto">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Let's Work Together</h2>
-            <p className="text-xl text-muted-foreground">
-              Ready to elevate your digital presence? Get in touch today.
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Let's Create Together</h2>
+            <p className="text-xl text-muted-foreground font-light">
+              Ready to elevate your digital presence? Let's talk.
             </p>
           </div>
           
@@ -32,10 +32,10 @@ const Contact = () => {
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <Mail className="h-5 w-5 text-accent" />
                   <a 
-                    href="mailto:contact@plentifulpower.com" 
+                    href="mailto:hello@vela.digital" 
                     className="hover:text-accent transition-colors"
                   >
-                    contact@plentifulpower.com
+                    hello@vela.digital
                   </a>
                 </div>
               </div>
@@ -43,10 +43,10 @@ const Contact = () => {
               <div className="text-center pt-4">
                 <Button 
                   size="lg"
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-10 py-6 text-lg transition-all hover:scale-105"
-                  onClick={() => window.location.href = 'mailto:contact@plentifulpower.com'}
+                  className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium px-10 py-7 text-base transition-all hover:scale-[1.02]"
+                  onClick={() => window.location.href = 'mailto:hello@vela.digital'}
                 >
-                  Send Message
+                  Start Conversation
                 </Button>
               </div>
             </CardContent>

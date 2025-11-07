@@ -35,9 +35,9 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-2xl font-bold hover:text-accent transition-colors"
+            className="text-2xl font-bold hover:text-accent transition-colors tracking-tight"
           >
-            PlentifulPower
+            Vela<span className="text-accent">.</span>
           </button>
           
           {/* Desktop Navigation */}

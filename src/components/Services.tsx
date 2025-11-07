@@ -31,32 +31,27 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-secondary/30">
+    <section id="services" className="py-24 bg-gradient-to-b from-background to-secondary/30">
       <div className="container px-4 mx-auto">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Services</h2>
-          <p className="text-xl text-muted-foreground">
-            Comprehensive digital solutions to help your business thrive
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">What We Craft</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light">
+            Refined digital solutions tailored to your vision
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="border-2 hover:border-accent transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-            >
+            <Card key={index} className="border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-elevated group">
               <CardHeader>
-                <div className="w-14 h-14 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                <div className="h-14 w-14 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
                   <service.icon className="h-7 w-7 text-accent" />
                 </div>
-                <CardTitle className="text-xl">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed">
+                <CardTitle className="text-xl mb-2 tracking-tight">{service.title}</CardTitle>
+                <CardDescription className="text-base leading-relaxed font-light">
                   {service.description}
                 </CardDescription>
-              </CardContent>
+              </CardHeader>
             </Card>
           ))}
         </div>

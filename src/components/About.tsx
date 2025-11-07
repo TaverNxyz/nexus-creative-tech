@@ -15,14 +15,14 @@ const About = () => {
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Bridging Creativity & Technology
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+                Where Craft Meets Code
               </h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                PlentifulPower Consulting is a solo creative technology consultancy dedicated to empowering small businesses and independent creators with practical, personalized digital solutions.
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed font-light">
+                Vela is a boutique digital studio dedicated to empowering small businesses and independent creators with refined, personalized digital solutions.
               </p>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Operating across both the Netherlands and the United States, I bring a unique cross-border perspective to help you navigate the modern digital landscape with confidence.
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed font-light">
+                Operating across the Netherlands and United States, I bring a unique cross-border perspective to help you navigate the modern digital landscape with elegance and precision.
               </p>
               
               <div className="space-y-3">
