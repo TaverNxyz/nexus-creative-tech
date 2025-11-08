@@ -1,13 +1,15 @@
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
-import { useRef, useMemo } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Stars } from '@react-three/drei';
+import { useRef, useMemo, useState } from 'react';
 import * as THREE from 'three';
 
 function NetworkParticles() {
   const pointsRef = useRef<THREE.Points>(null);
   const lineRef = useRef<THREE.LineSegments>(null);
+  const mouse = useRef({ x: 0, y: 0 });
+  const { viewport } = useThree();
 
-  const particles = useMemo(() => {
+  const initialPositions = useMemo(() => {
     const count = 100;
     const positions = new Float32Array(count * 3);
     
@@ -20,26 +22,65 @@ function NetworkParticles() {
     return positions;
   }, []);
 
-  const lines = useMemo(() => {
-    const positions: number[] = [];
+  const [currentPositions] = useState(() => new Float32Array(initialPositions));
+
+  useFrame((state) => {
+    if (!pointsRef.current || !lineRef.current) return;
+
+    // Update mouse position in 3D space
+    mouse.current.x = (state.pointer.x * viewport.width) / 2;
+    mouse.current.y = (state.pointer.y * viewport.height) / 2;
+
+    const positions = pointsRef.current.geometry.attributes.position.array as Float32Array;
     const maxDistance = 3;
-    
-    for (let i = 0; i < particles.length; i += 3) {
-      for (let j = i + 3; j < particles.length; j += 3) {
-        const dx = particles[i] - particles[j];
-        const dy = particles[i + 1] - particles[j + 1];
-        const dz = particles[i + 2] - particles[j + 2];
+    const mouseInfluence = 2;
+    const linePositions: number[] = [];
+
+    // Update particle positions based on mouse
+    for (let i = 0; i < positions.length; i += 3) {
+      const dx = mouse.current.x - currentPositions[i];
+      const dy = mouse.current.y - currentPositions[i + 1];
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < mouseInfluence) {
+        const force = (1 - distance / mouseInfluence) * 0.02;
+        currentPositions[i] += dx * force;
+        currentPositions[i + 1] += dy * force;
+      }
+
+      // Slowly return to initial position
+      currentPositions[i] += (initialPositions[i] - currentPositions[i]) * 0.02;
+      currentPositions[i + 1] += (initialPositions[i + 1] - currentPositions[i + 1]) * 0.02;
+      currentPositions[i + 2] += (initialPositions[i + 2] - currentPositions[i + 2]) * 0.02;
+
+      positions[i] = currentPositions[i];
+      positions[i + 1] = currentPositions[i + 1];
+      positions[i + 2] = currentPositions[i + 2];
+    }
+
+    // Rebuild lines based on new positions
+    for (let i = 0; i < positions.length; i += 3) {
+      for (let j = i + 3; j < positions.length; j += 3) {
+        const dx = positions[i] - positions[j];
+        const dy = positions[i + 1] - positions[j + 1];
+        const dz = positions[i + 2] - positions[j + 2];
         const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
         
         if (distance < maxDistance) {
-          positions.push(particles[i], particles[i + 1], particles[i + 2]);
-          positions.push(particles[j], particles[j + 1], particles[j + 2]);
+          linePositions.push(positions[i], positions[i + 1], positions[i + 2]);
+          linePositions.push(positions[j], positions[j + 1], positions[j + 2]);
         }
       }
     }
+
+    pointsRef.current.geometry.attributes.position.needsUpdate = true;
     
-    return new Float32Array(positions);
-  }, [particles]);
+    // Update line geometry
+    lineRef.current.geometry.dispose();
+    const newGeometry = new THREE.BufferGeometry();
+    newGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(linePositions), 3));
+    lineRef.current.geometry = newGeometry;
+  });
 
   return (
     <>
@@ -47,8 +88,8 @@ function NetworkParticles() {
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            count={particles.length / 3}
-            array={particles}
+            count={initialPositions.length / 3}
+            array={initialPositions}
             itemSize={3}
           />
         </bufferGeometry>
@@ -65,8 +106,8 @@ function NetworkParticles() {
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            count={lines.length / 3}
-            array={lines}
+            count={0}
+            array={new Float32Array(0)}
             itemSize={3}
           />
         </bufferGeometry>
@@ -90,12 +131,6 @@ export default function AnimatedBackground() {
         <ambientLight intensity={0.5} />
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         <NetworkParticles />
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          autoRotate
-          autoRotateSpeed={0.5}
-        />
       </Canvas>
     </div>
   );
