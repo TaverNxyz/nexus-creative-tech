@@ -49,12 +49,14 @@ const Navigation = () => {
   };
 
   const navLinks = [
-    { label: 'Services', id: 'services' },
+    { label: 'Services', path: '/services' },
     { label: 'About', id: 'about' },
     { label: 'Portfolio', id: 'portfolio' },
     { label: 'Blog', path: '/blog' },
     { label: 'Contact', id: 'contact' }
   ];
+
+  const isServicesPage = location.pathname === '/services';
 
   return (
     <nav 
@@ -79,15 +81,22 @@ const Navigation = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => link.path ? handleNavigation(link.path) : scrollToSection(link.id!)}
-                className="text-foreground hover:text-accent transition-colors font-medium drop-shadow-sm"
-              >
-                {link.label}
-              </button>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = link.path === '/services' && isServicesPage;
+              return (
+                <button
+                  key={link.label}
+                  onClick={() => link.path ? handleNavigation(link.path) : scrollToSection(link.id!)}
+                  className={`transition-colors font-medium drop-shadow-sm ${
+                    isActive 
+                      ? 'text-[#FE4A49]' 
+                      : 'text-foreground hover:text-accent'
+                  }`}
+                >
+                  {link.label}
+                </button>
+              );
+            })}
             {isAuthenticated ? (
               <button
                 onClick={handleLogout}
@@ -135,15 +144,22 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden py-6 border-t border-border bg-background/95 backdrop-blur-md">
             <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => link.path ? handleNavigation(link.path) : scrollToSection(link.id!)}
-                  className="text-foreground hover:text-accent transition-colors font-medium text-left px-4 py-2"
-                >
-                  {link.label}
-                </button>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = link.path === '/services' && isServicesPage;
+                return (
+                  <button
+                    key={link.label}
+                    onClick={() => link.path ? handleNavigation(link.path) : scrollToSection(link.id!)}
+                    className={`transition-colors font-medium text-left px-4 py-2 ${
+                      isActive 
+                        ? 'text-[#FE4A49]' 
+                        : 'text-foreground hover:text-accent'
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                );
+              })}
               <div className="px-4 pt-2 space-y-2">
                 {isAuthenticated ? (
                   <button

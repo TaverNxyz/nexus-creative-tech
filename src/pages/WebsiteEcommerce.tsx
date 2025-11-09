@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ServiceHero from '@/components/ServiceHero';
+import SEO from '@/components/SEO';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Globe, ShoppingCart, Code, Zap, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -60,6 +61,12 @@ const WebsiteEcommerce = () => {
 
   return (
     <>
+      <SEO
+        title="Website & eCommerce Solutions | Velarix Digital Studio"
+        description="Custom web development and online store setup with React, Next.js, and Vue.js. Professional eCommerce solutions for small businesses across Netherlands and United States."
+        keywords="web development, eCommerce solutions, online store setup, React developer, Next.js developer, Shopify development, WooCommerce, custom website design, small business website, Netherlands web design, US eCommerce"
+        canonical="https://velarix.digital/website-ecommerce"
+      />
       <Navigation />
       <ServiceHero
         title="Website & eCommerce"

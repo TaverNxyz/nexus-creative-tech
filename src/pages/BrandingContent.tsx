@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ServiceHero from '@/components/ServiceHero';
+import SEO from '@/components/SEO';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Palette, PenTool, Target, TrendingUp, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -47,6 +48,12 @@ const BrandingContent = () => {
 
   return (
     <>
+      <SEO
+        title="Branding & Content Strategy | Velarix Digital Studio"
+        description="Complete brand identity design, content strategy, and visual asset creation. Logo design, brand guidelines, and content planning for small businesses."
+        keywords="branding services, brand identity design, logo design, content strategy, brand guidelines, visual identity, brand voice, content marketing, Netherlands branding, US brand design, small business branding"
+        canonical="https://velarix.digital/branding-content"
+      />
       <Navigation />
       <ServiceHero
         title="Branding & Content"

@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ServiceHero from '@/components/ServiceHero';
+import SEO from '@/components/SEO';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Zap, Search, Shield, BarChart3, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -47,6 +48,12 @@ const WebOptimization = () => {
 
   return (
     <>
+      <SEO
+        title="Web Optimization & Maintenance | Velarix Digital Studio"
+        description="Website speed optimization, SEO enhancement, security updates, and ongoing maintenance. Keep your digital presence running smoothly with professional optimization services."
+        keywords="web optimization, SEO services, website speed optimization, website maintenance, performance optimization, security updates, technical SEO, Netherlands web optimization, US web maintenance, small business SEO"
+        canonical="https://velarix.digital/web-optimization"
+      />
       <Navigation />
       <ServiceHero
         title="Web Optimization"

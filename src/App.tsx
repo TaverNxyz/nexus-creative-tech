@@ -12,6 +12,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import Services from "./pages/Services";
 import WebsiteEcommerce from "./pages/WebsiteEcommerce";
 import BrandingContent from "./pages/BrandingContent";
 import TechnicalAutomation from "./pages/TechnicalAutomation";
@@ -32,6 +33,7 @@ const App = () => (
             <PageTransition>
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/services" element={<Services />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/login" element={<Login />} />

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const blogPosts = [
@@ -50,6 +51,12 @@ const Blog = () => {
   
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Blog & Insights | Velarix Digital Studio"
+        description="Thoughts on design, technology, and digital strategy. Insights on web development, branding, automation, and digital marketing for small businesses."
+        keywords="web design blog, digital strategy insights, technology blog, web development tips, branding advice, automation guides, small business digital marketing, Netherlands web design blog, US digital strategy"
+        canonical="https://velarix.digital/blog"
+      />
       <Navigation />
       
       <div className="pt-28 pb-24">

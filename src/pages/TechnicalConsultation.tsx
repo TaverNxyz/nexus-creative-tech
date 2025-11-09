@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ServiceHero from '@/components/ServiceHero';
+import SEO from '@/components/SEO';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { MessageSquare, Lightbulb, Target, Users, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +31,7 @@ const TechnicalConsultation = () => {
     {
       icon: Users,
       title: "Team Training",
-      description: "Knowledge transfer sessions, documentation, and training to empower your team with the skills needed to maintain and grow your systems."
+      description: "Knowledge transfe   r sessions, documentation, and training to empower your team with the skills needed to maintain and grow your systems."
     }
   ];
 
@@ -47,6 +48,12 @@ const TechnicalConsultation = () => {
 
   return (
     <>
+      <SEO
+        title="Technical Consultation Services | Velarix Digital Studio"
+        description="Expert guidance on technology decisions, digital strategy, and implementation planning. Technical consultation for small businesses and startups."
+        keywords="technical consultation, technology consulting, digital strategy, tech stack selection, architecture consulting, code review, technical advisory, Netherlands tech consulting, US technical consultation, freelance tech consultant"
+        canonical="https://velarix.digital/technical-consultation"
+      />
       <Navigation />
       <ServiceHero
         title="Technical Consultation"
